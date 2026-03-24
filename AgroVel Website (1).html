@@ -1,0 +1,1326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgroVel - Premium Seed Oils & Agricultural Products</title>
+    <style>
+        :root {
+            --color-primary: #2d7a4a;
+            --color-primary-hover: #245a39;
+            --color-accent: #d4a574;
+            --color-accent-light: #e8c7a4;
+            --color-text: #1f2937;
+            --color-text-light: #6b7280;
+            --color-bg: #fafaf8;
+            --color-white: #ffffff;
+            --color-border: #e5e7eb;
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--color-text);
+            background-color: var(--color-bg);
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: var(--color-white);
+            box-shadow: var(--shadow-sm);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--color-text);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--color-primary);
+        }
+
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 0.4rem;
+        }
+
+        .nav-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--color-text);
+            border-radius: 2px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--color-primary) 0%, #1f5a35 100%);
+            color: var(--color-white);
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--color-accent);
+            color: var(--color-text);
+            padding: 0.8rem 2rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid var(--color-accent);
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .cta-button:hover {
+            background-color: var(--color-accent-light);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Products Section */
+        .products {
+            padding: 5rem 2rem;
+            background-color: var(--color-white);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--color-primary);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .product-card {
+            background: var(--color-white);
+            border: 1px solid var(--color-border);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--color-accent);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-light) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-info h3 {
+            color: var(--color-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .product-info p {
+            color: var(--color-text-light);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .product-badge {
+            display: inline-block;
+            background-color: rgba(45, 122, 74, 0.1);
+            color: var(--color-primary);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        /* About Section */
+        .about {
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, rgba(45, 122, 74, 0.05) 0%, rgba(212, 165, 116, 0.05) 100%);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            color: var(--color-primary);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .about-text p {
+            color: var(--color-text-light);
+            margin-bottom: 1rem;
+        }
+
+        .about-image {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        .features-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .feature {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            min-width: 50px;
+        }
+
+        .feature h4 {
+            color: var(--color-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .feature p {
+            color: var(--color-text-light);
+            font-size: 0.95rem;
+        }
+
+        /* Categories Section */
+        .categories {
+            padding: 5rem 2rem;
+            background-color: var(--color-white);
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .category-card {
+            background: linear-gradient(135deg, #f5f5f5 0%, #ffffff 100%);
+            padding: 2rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--color-primary);
+            transition: all 0.3s ease;
+        }
+
+        .category-card:hover {
+            border-left-color: var(--color-accent);
+            transform: translateX(8px);
+        }
+
+        .category-card h3 {
+            color: var(--color-primary);
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        .category-card p {
+            color: var(--color-text-light);
+            margin-bottom: 1rem;
+        }
+
+        .category-list {
+            list-style: none;
+        }
+
+        .category-list li {
+            color: var(--color-text-light);
+            padding: 0.4rem 0;
+            font-size: 0.95rem;
+        }
+
+        .category-list li:before {
+            content: "✓ ";
+            color: var(--color-primary);
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+
+        /* Package Sizes Section */
+        .packages {
+            padding: 5rem 2rem;
+            background-color: var(--color-bg);
+        }
+
+        .packages-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .package-category {
+            margin-bottom: 4rem;
+        }
+
+        .package-category h3 {
+            text-align: center;
+            font-size: 1.8rem;
+            color: var(--color-primary);
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--color-accent);
+        }
+
+        .package-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .package-card {
+            background: var(--color-white);
+            border: 2px solid var(--color-border);
+            border-radius: 10px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .package-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--color-accent);
+            box-shadow: var(--shadow-md);
+        }
+
+        .package-illustration {
+            width: 100%;
+            height: 160px;
+            margin-bottom: 1rem;
+            filter: drop-shadow(0 2px 4px rgba(45, 122, 74, 0.15));
+        }
+
+        .package-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .package-card h4 {
+            color: var(--color-primary);
+            font-size: 1.2rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .package-price {
+            font-size: 0.8rem;
+            color: var(--color-accent);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .package-details {
+            list-style: none;
+            text-align: left;
+            font-size: 0.85rem;
+            color: var(--color-text-light);
+            flex-grow: 1;
+        }
+
+        .package-details li {
+            padding: 0.3rem 0;
+            line-height: 1.4;
+            border-bottom: 1px solid rgba(212, 165, 116, 0.2);
+        }
+
+        .package-details li:last-child {
+            border-bottom: none;
+        }
+
+        /* Stats Section */
+        .stats {
+            padding: 3rem 2rem;
+            background: linear-gradient(135deg, var(--color-primary) 0%, #1f5a35 100%);
+            color: var(--color-white);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--color-accent);
+        }
+
+        .stat-item p {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 5rem 2rem;
+            background-color: var(--color-white);
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .contact-info h3 {
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-item-icon {
+            font-size: 1.5rem;
+            min-width: 30px;
+            color: var(--color-accent);
+        }
+
+        .contact-item p {
+            color: var(--color-text-light);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--color-primary);
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid var(--color-border);
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 3px rgba(45, 122, 74, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1f2937;
+            color: var(--color-white);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 1rem;
+            color: var(--color-accent);
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section a {
+            color: #d1d5db;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--color-accent);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #374151;
+            padding-top: 2rem;
+            color: #9ca3af;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem;
+            }
+
+            .nav-links {
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: var(--color-white);
+                flex-direction: column;
+                gap: 1rem;
+                padding: 2rem;
+                display: none;
+                box-shadow: var(--shadow-md);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-toggle {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .hero {
+                padding: 3rem 1rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-links {
+                gap: 0.5rem;
+                padding: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stat-item h3 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <nav>
+            <a href="#" class="logo">🌾 AgroVel</a>
+            <ul class="nav-links">
+                <li><a href="#products">Products</a></li>
+                <li><a href="#packages">Packages</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#categories">Categories</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Premium Seed Oils & Agricultural Products</h1>
+            <p>Quality seeds, pure oils, and nutritious pulses for your family and business</p>
+            <a href="#contact" class="cta-button">Get In Touch</a>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products" id="products">
+        <h2 class="section-title">Our Products</h2>
+        <div class="products-grid">
+            <div class="product-card">
+                <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1474511632516-a5fe8dfeb011?w=400&h=200&fit=crop'); background-size: cover; background-position: center;">
+                </div>
+                <div class="product-info">
+                    <span class="product-badge">Seed Oil</span>
+                    <h3>Sunflower Oil</h3>
+                    <p>Premium quality cold-pressed sunflower oil rich in vitamin E and antioxidants.</p>
+                    <a href="#contact" class="cta-button">Enquire Now</a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1537632066926-ab70919a7b42?w=400&h=200&fit=crop'); background-size: cover; background-position: center;">
+                </div>
+                <div class="product-info">
+                    <span class="product-badge">Seed Oil</span>
+                    <h3>Mustard Oil</h3>
+                    <p>Traditional mustard oil with high medicinal properties and natural spice.</p>
+                    <a href="#contact" class="cta-button">Enquire Now</a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1512621539594-36ae5e972e1e?w=400&h=200&fit=crop'); background-size: cover; background-position: center;">
+                </div>
+                <div class="product-info">
+                    <span class="product-badge">Pulses</span>
+                    <h3>Moong Dal</h3>
+                    <p>Premium quality moong dal, rich in protein and easy to digest.</p>
+                    <a href="#contact" class="cta-button">Enquire Now</a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1512621539594-36ae5e972e1e?w=400&h=200&fit=crop'); background-size: cover; background-position: center;">
+                </div>
+                <div class="product-info">
+                    <span class="product-badge">Pulses</span>
+                    <h3>Masoor Dal</h3>
+                    <p>Nutritious red lentils, packed with fiber and essential minerals.</p>
+                    <a href="#contact" class="cta-button">Enquire Now</a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1585527054455-33a5c3844c0b?w=400&h=200&fit=crop'); background-size: cover; background-position: center;">
+                </div>
+                <div class="product-info">
+                    <span class="product-badge">Byproducts</span>
+                    <h3>Oil Cake</h3>
+                    <p>Nutritious livestock feed and fertilizer byproduct from oil extraction.</p>
+                    <a href="#contact" class="cta-button">Enquire Now</a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1576857394663-c6a1fa4f26e4?w=400&h=200&fit=crop'); background-size: cover; background-position: center;">
+                </div>
+                <div class="product-info">
+                    <span class="product-badge">Byproducts</span>
+                    <h3>Natural Extracts</h3>
+                    <p>Premium natural extracts from seed processing for cosmetics and supplements.</p>
+                    <a href="#contact" class="cta-button">Enquire Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Package Sizes Section -->
+    <section class="packages" id="packages">
+        <h2 class="section-title">Product Packages & Sizes</h2>
+        <p style="text-align: center; color: var(--color-text-light); margin-bottom: 2rem; max-width: 800px; margin-left: auto; margin-right: auto;">
+            We offer a wide range of packaging sizes to suit individual consumers, retailers, and bulk buyers. Choose the perfect size for your needs.
+        </p>
+        <div class="packages-grid">
+            <!-- Seed Oils Packages -->
+            <div class="package-category">
+                <h3>🌻 Seed Oils</h3>
+                <div class="package-cards">
+                    <div class="package-card">
+                        <svg class="package-illustration" viewBox="0 0 200 280" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Bottle cap -->
+                            <rect x="75" y="20" width="50" height="15" fill="#d4a574" rx="3"/>
+                            <!-- Bottle neck -->
+                            <path d="M 80 35 L 75 50 L 125 50 L 120 35 Z" fill="#e8d5c4" stroke="#2d7a4a" stroke-width="2"/>
+                            <!-- Bottle body -->
+                            <path d="M 75 50 Q 60 80 65 130 Q 65 180 90 220 L 110 220 Q 135 180 135 130 Q 140 80 125 50 Z" fill="#f0f4f1" stroke="#2d7a4a" stroke-width="2.5" opacity="0.8"/>
+                            <!-- Glass shine -->
+                            <ellipse cx="80" cy="100" rx="8" ry="25" fill="#ffffff" opacity="0.6"/>
+                            <!-- Oil level inside -->
+                            <path d="M 75 140 Q 60 150 65 180 Q 65 190 90 210 L 110 210 Q 135 190 135 180 Q 140 150 125 140 Z" fill="#d4a574" opacity="0.7"/>
+                            <!-- Label -->
+                            <rect x="70" y="110" width="60" height="50" fill="#fafaf8" rx="2"/>
+                            <text x="100" y="130" font-size="12" font-weight="bold" text-anchor="middle" fill="#2d7a4a">Premium</text>
+                            <text x="100" y="147" font-size="10" text-anchor="middle" fill="#6b7280">Oil</text>
+                            <text x="100" y="160" font-size="9" text-anchor="middle" fill="#6b7280">250ml</text>
+                        </svg>
+                        <h4>250 ML</h4>
+                        <p class="package-price">Individual</p>
+                        <ul class="package-details">
+                            <li>Premium Glass Bottle</li>
+                            <li>Perfect for Home Use</li>
+                            <li>Qty: 1-6 pcs</li>
+                        </ul>
+                    </div>
+
+                    <div class="package-card">
+                        <svg class="package-illustration" viewBox="0 0 200 280" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Bottle cap -->
+                            <rect x="72" y="15" width="56" height="18" fill="#d4a574" rx="3"/>
+                            <!-- Bottle neck -->
+                            <path d="M 78 33 L 72 52 L 128 52 L 122 33 Z" fill="#e8d5c4" stroke="#2d7a4a" stroke-width="2"/>
+                            <!-- Bottle body -->
+                            <path d="M 72 52 Q 55 85 58 140 Q 58 195 88 230 L 112 230 Q 142 195 142 140 Q 145 85 128 52 Z" fill="#f0f4f1" stroke="#2d7a4a" stroke-width="2.5" opacity="0.8"/>
+                            <!-- Glass shine -->
+                            <ellipse cx="75" cy="110" rx="9" ry="35" fill="#ffffff" opacity="0.6"/>
+                            <!-- Oil level inside -->
+                            <path d="M 72 110 Q 55 125 58 170 Q 58 200 88 225 L 112 225 Q 142 200 142 170 Q 145 125 128 110 Z" fill="#d4a574" opacity="0.7"/>
+                            <!-- Label -->
+                            <rect x="68" y="100" width="64" height="60" fill="#fafaf8" rx="2"/>
+                            <text x="100" y="122" font-size="13" font-weight="bold" text-anchor="middle" fill="#2d7a4a">AgroVel</text>
+                            <text x="100" y="140" font-size="11" text-anchor="middle" fill="#6b7280">Premium Oil</text>
+                            <text x="100" y="155" font-size="10" text-anchor="middle" fill="#6b7280">500ml</text>
+                        </svg>
+                        <h4>500 ML</h4>
+                        <p class="package-price">Popular</p>
+                        <ul class="package-details">
+                            <li>Glass/HDPE Bottle</li>
+                            <li>Family Pack</li>
+                            <li>Qty: 1-12 pcs</li>
+                        </ul>
+                    </div>
+
+                    <div class="package-card">
+                        <svg class="package-illustration" viewBox="0 0 200 280" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Tin container top -->
+                            <ellipse cx="100" cy="35" rx="55" ry="20" fill="#d4a574" stroke="#2d7a4a" stroke-width="2.5"/>
+                            <ellipse cx="100" cy="33" rx="55" ry="18" fill="#e8c7a4"/>
+                            <!-- Rim -->
+                            <path d="M 45 35 Q 45 42 100 48 Q 155 42 155 35 Z" fill="#c9985f" stroke="#2d7a4a" stroke-width="1.5"/>
+                            <!-- Tin body -->
+                            <rect x="45" y="35" width="110" height="140" fill="#e8c7a4" stroke="#2d7a4a" stroke-width="2.5"/>
+                            <!-- Left seam -->
+                            <line x1="45" y1="35" x2="45" y2="175" stroke="#2d7a4a" stroke-width="1.5"/>
+                            <!-- Right seam -->
+                            <line x1="155" y1="35" x2="155" y2="175" stroke="#2d7a4a" stroke-width="1.5"/>
+                            <!-- Tin bottom -->
+                            <ellipse cx="100" cy="175" rx="55" ry="20" fill="#d4a574" stroke="#2d7a4a" stroke-width="2.5"/>
+                            <!-- Label -->
+                            <rect x="50" y="65" width="100" height="80" fill="#fafaf8" stroke="#d4a574" stroke-width="1.5" rx="3"/>
+                            <text x="100" y="90" font-size="14" font-weight="bold" text-anchor="middle" fill="#2d7a4a">AgroVel</text>
+                            <text x="100" y="110" font-size="12" text-anchor="middle" fill="#d4a574">Seed Oil</text>
+                            <text x="100" y="130" font-size="11" text-anchor="middle" fill="#6b7280">1 KG</text>
+                        </svg>
+                        <h4>1 KG</h4>
+                        <p class="package-price">Best Value</p>
+                        <ul class="package-details">
+                            <li>Tin/HDPE Container</li>
+                            <li>Retail Pack</li>
+                            <li>Qty: 1-24 pcs</li>
+                        </ul>
+                    </div>
+
+                    <div class="package-card">
+                        <svg class="package-illustration" viewBox="0 0 200 280" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Tin container top -->
+                            <ellipse cx="100" cy="25" rx="60" ry="22" fill="#d4a574" stroke="#2d7a4a" stroke-width="2.5"/>
+                            <ellipse cx="100" cy="22" rx="60" ry="20" fill="#e8c7a4"/>
+                            <!-- Rim -->
+                            <path d="M 40 25 Q 40 33 100 40 Q 160 33 160 25 Z" fill="#c9985f" stroke="#2d7a4a" stroke-width="1.5"/>
+                            <!-- Tin body -->
+                            <rect x="40" y="25" width="120" height="160" fill="#e8c7a4" stroke="#2d7a4a" stroke-width="2.5"/>
+                            <!-- Seams -->
+                            <line x1="40" y1="25" x2="40" y2="185" stroke="#2d7a4a" stroke-width="1.5"/>
+                            <line x1="160" y1="25" x2="160" y2="185" stroke="#2d7a4a" stroke-width="1.5"/>
+                            <!-- Tin bottom -->
+                            <ellipse cx="100" cy="185" rx="60" ry="22" fill="#d4a574" stroke="#2d7a4a" stroke-width="2.5"/>
+                            <!-- Label -->
+                            <rect x="45" y="55" width="110" height="90" fill="#fafaf8" stroke="#d4a574" stroke-width="1.5" rx="3"/>
+                            <text x="100" y="80" font-size="13" font-weight="bold" text-anchor="middle" fill="#2d7a4a">AgroVel</text>
+                            <text x="100" y="102" font-size="11" text-anchor="middle" fill="#d4a574">Premium</text>
+                            <text x="100" y="120" font-size="11" text-anchor="middle" fill="#d4a574">Seed Oil</text>
+                            <text x="100" y="138" font-size="10" text-anchor="middle" fill="#6b7280">5 KG</text>
+                        </svg>
+                        <h4>5 KG</h4>
+                        <p class="package-price">Bulk</p>
+                        <ul class="package-details">
+                            <li>Metal Tin/Plastic</li>
+                            <li>Commercial Use</li>
+                            <li>Qty: Custom</li>
+                        </ul>
+                    </div>
+
+                    <div class="package-card">
+                        <svg class="package-illustration" viewBox="0 0 200 280" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Drum top -->
+                            <ellipse cx="100" cy="30" rx="65" ry="25" fill="#8b7355" stroke="#2d7a4a" stroke-width="3"/>
+                            <ellipse cx="100" cy="25" rx="65" ry="22" fill="#a0826d"/>
+                            <!-- Drum body -->
+                            <path d="M 35 30 Q 32 80 35 130 Q 35 160 100 180 Q 165 160 165 130 Q 168 80 165 30 Z" fill="#a0826d" stroke="#2d7a4a" stroke-width="3"/>
+                            <!-- Shading -->
+                            <path d="M 35 30 Q 35 80 35 130 Q 35 160 100 180 Q 68 165 68 130 Q 68 80 68 30 Z" fill="#8b7355" opacity="0.3"/>
+                            <!-- Drum bottom -->
+                            <ellipse cx="100" cy="180" rx="65" ry="25" fill="#8b7355" stroke="#2d7a4a" stroke-width="3"/>
+                            <!-- Bands -->
+                            <rect x="35" y="75" width="130" height="6" fill="#2d7a4a" opacity="0.6"/>
+                            <rect x="35" y="130" width="130" height="6" fill="#2d7a4a" opacity="0.6"/>
+                            <!-- Label -->
+                            <rect x="45" y="90" width="110" height="50" fill="#fafaf8" stroke="#d4a574" stroke-width="2" rx="4"/>
+                            <text x="100" y="110" font-size="12" font-weight="bold" text-anchor="middle" fill="#2d7a4a">Bulk Oil</text>
+                            <text x="100" y="130" font-size="11" text-anchor="middle" fill="#6b7280">20 KG Drum</text>
+                        </svg>
+                        <h4>20 KG</h4>
+                        <p class="package-price">Industrial</p>
+                        <ul class="package-details">
+                            <li>Bulk Pail/Drum</li>
+                            <li>For Manufacturers</li>
+                            <li>Qty: Custom</li>
+                        </ul>
+                    </div>
+
+                    <div class="package-card">
+                        <svg class="package-illustration" viewBox="0 0 200 280" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Large drum top -->
+                            <ellipse cx="100" cy="20" rx="70" ry="28" fill="#5a4a3a" stroke="#2d7a4a" stroke-width="3.5"/>
+                            <ellipse cx="100" cy="12" rx="70" ry="25" fill="#6b5a4a"/>
+                            <!-- Drum body -->
+                            <path d="M 30 20 Q 28 75 30 120 Q 32 165 100 190 Q 168 165 170 120 Q 172 75 170 20 Z" fill="#6b5a4a" stroke="#2d7a4a" stroke-width="3.5"/>
+                            <!-- Seam detail -->
+                            <line x1="30" y1="20" x2="30" y2="190" stroke="#2d7a4a" stroke-width="2" opacity="0.5"/>
+                            <line x1="170" y1="20" x2="170" y2="190" stroke="#2d7a4a" stroke-width="2" opacity="0.5"/>
+                            <!-- Drum bottom -->
+                            <ellipse cx="100" cy="190" rx="70" ry="28" fill="#5a4a3a" stroke="#2d7a4a" stroke-width="3.5"/>
+                            <!-- Steel bands -->
+                            <rect x="30" y="65" width="140" height="8" fill="#2d7a4a"/>
+                            <rect x="30" y="120" width="140" height="8" fill="#2d7a4a"/>
+                            <!-- Label -->
+                            <rect x="40" y="80" width="120" height="55" fill="#fafaf8" stroke="#d4a574" stroke-width="2.5" rx="4"/>
+                            <text x="100" y="100" font-size="11" font-weight="bold" text-anchor="middle" fill="#2d7a4a">Wholesale</text>
+                            <text x="100" y="120" font-size="11" text-anchor="middle" fill="#6b7280">200 KG Tanker</text>
+                        </svg>
+                        <h4>200 KG+</h4>
+                        <p class="package-price">Wholesale</p>
+                        <ul class="package-details">
+                            <li>Steel Drum/Tanker</li>
+                            <li>Export Grade</li>
+                            <li>Qty: Negotiable</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pulses Packages -->
+            <div class="package-category">
+                <h3>🫘 Pulses & Legumes</h3>
+                <div class="package-cards">
+                    <div class="package-card">
+                        <div class="package-icon">🛍️</div>
+                        <h4>500 GM</h4>
+                        <p class="package-price">Individual</p>
+                        <ul class="package-details">
+                            <li>Polythene Pouch</li>
+                            <li>Home Size</li>
+                            <li>Qty: 1-10 pcs</li>
+                        </ul>
+                    </div>
+
+                    <div class="package-card">
+                        <div class="package-icon">🛍️</div>
+                        <h4>1 KG</h4>
+                        <p class="package-price">Popular</p>
+                        <ul class="package-details">
+                            <li>Kraft Paper Bag</li>
+                            <li>Retail Pack</li>
+                            <li>Qty: 1-20 pcs</li>
+                        </ul>
+                    </div>
+
+                    <div class="package-card">
+                        <div class="package-icon">📦</div>
+                        <h4>5 KG</h4>
+                        <p class="package-price">Family Pack</p>
+                        <ul class="package-details">
+                            <li>Cardboard Box</li>
+                            <li>Bulk Savings</li>
+                            <li>Qty: Custom</li>
+                        </ul>
+                    </div>
+
+                    <div class="package-card">
+                        <div class="package-icon">📦</div>
+                        <h4>10 KG</h4>
+                        <p class="package-price">Bulk</p>
+                        <ul class="package-details">
+                            <li>Jute Sack</li>
+                            <li>Wholesale</li>
+                            <li>Qty: Custom</li>
+                        </ul>
+                    </div>
+
+                    <div class="package-card">
+                        <div class="package-icon">🏭</div>
+                        <h4>50 KG</h4>
+                        <p class="package-price">Commercial</p>
+                        <ul class="package-details">
+                            <li>Polypropylene Bag</li>
+                            <li>Food Industry</li>
+                            <li>Qty: Custom</li>
+                        </ul>
+                    </div>
+
+                    <div class="package-card">
+                        <div class="package-icon">🏭</div>
+                        <h4>100 KG+</h4>
+                        <p class="package-price">Industrial</p>
+                        <ul class="package-details">
+                            <li>FIBC Bags</li>
+                            <li>Contract Terms</li>
+                            <li>Qty: Negotiable</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Byproducts Packages -->
+            <div class="package-category">
+                <h3>⚙️ Byproducts</h3>
+                <div class="package-cards">
+                    <div class="package-card">
+                        <div class="package-icon">📦</div>
+                        <h4>1 KG</h4>
+                        <p class="package-price">Sample</p>
+                        <ul class="package-details">
+                            <li>Kraft Pouch</li>
+                            <li>Trial Pack</li>
+                            <li>Qty: 1-5 pcs</li>
+                        </ul>
+                    </div>
+
+                    <div class="package-card">
+                        <div class="package-icon">📦</div>
+                        <h4>5 KG</h4>
+                        <p class="package-price">Small Bulk</p>
+                        <ul class="package-details">
+                            <li>Cardboard Box</li>
+                            <li>Feed/Fertilizer</li>
+                            <li>Qty: Custom</li>
+                        </ul>
+                    </div>
+
+                    <div class="package-card">
+                        <div class="package-icon">🛢️</div>
+                        <h4>20 KG</h4>
+                        <p class="package-price">Standard</p>
+                        <ul class="package-details">
+                            <li>Woven Sack</li>
+                            <li>Livestock Feed</li>
+                            <li>Qty: Custom</li>
+                        </ul>
+                    </div>
+
+                    <div class="package-card">
+                        <div class="package-icon">🛢️</div>
+                        <h4>50 KG</h4>
+                        <p class="package-price">Bulk</p>
+                        <ul class="package-details">
+                            <li>Polypropylene Bag</li>
+                            <li>Agricultural Use</li>
+                            <li>Qty: Custom</li>
+                        </ul>
+                    </div>
+
+                    <div class="package-card">
+                        <div class="package-icon">🏭</div>
+                        <h4>500 KG+</h4>
+                        <p class="package-price">Industrial</p>
+                        <ul class="package-details">
+                            <li>Bulk FIBC/Tanker</li>
+                            <li>Wholesale Rate</li>
+                            <li>Qty: Contract</li>
+                        </ul>
+                    </div>
+
+                    <div class="package-card">
+                        <div class="package-icon">🏭</div>
+                        <h4>Custom Size</h4>
+                        <p class="package-price">Tailor-made</p>
+                        <ul class="package-details">
+                            <li>Any Specification</li>
+                            <li>MOQ Applicable</li>
+                            <li>Contact for Quote</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories" id="categories">
+        <h2 class="section-title">Our Product Categories</h2>
+        <div class="categories-grid">
+            <div class="category-card">
+                <h3>🌻 Seed Oils</h3>
+                <p>Cold-pressed and refined seed oils for cooking and industrial use</p>
+                <ul class="category-list">
+                    <li>Sunflower Oil</li>
+                    <li>Mustard Oil</li>
+                    <li>Soybean Oil</li>
+                    <li>Groundnut Oil</li>
+                </ul>
+            </div>
+
+            <div class="category-card">
+                <h3>🫘 Pulses & Legumes</h3>
+                <p>Nutrient-rich pulses for daily consumption and food industry</p>
+                <ul class="category-list">
+                    <li>Moong Dal</li>
+                    <li>Masoor Dal</li>
+                    <li>Chickpeas</li>
+                    <li>Black Beans</li>
+                </ul>
+            </div>
+
+            <div class="category-card">
+                <h3>⚙️ Byproducts</h3>
+                <p>Value-added byproducts from agricultural processing</p>
+                <ul class="category-list">
+                    <li>Oil Cake & Meal</li>
+                    <li>Seed Hulls</li>
+                    <li>Natural Extracts</li>
+                    <li>Organic Fertilizers</li>
+                </ul>
+            </div>
+
+            <div class="category-card">
+                <h3>🌾 Seeds</h3>
+                <p>High-quality certified seeds for agricultural cultivation</p>
+                <ul class="category-list">
+                    <li>Hybrid Seeds</li>
+                    <li>Certified Varieties</li>
+                    <li>Organic Seeds</li>
+                    <li>Bulk Supplies</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <h2 class="section-title">About AgroVel</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <h2>Leading Agricultural Products Since 2010</h2>
+                <p>AgroVel has been committed to providing the highest quality seed oils, pulses, and agricultural byproducts to farmers, businesses, and families across India and beyond.</p>
+                <p>Our state-of-the-art facilities ensure that every product meets international quality standards while maintaining sustainability and environmental responsibility.</p>
+                <div class="features-list">
+                    <div class="feature">
+                        <div class="feature-icon">✅</div>
+                        <div>
+                            <h4>Quality Assured</h4>
+                            <p>ISO certified and tested for purity</p>
+                        </div>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">🌱</div>
+                        <div>
+                            <h4>Sustainable</h4>
+                            <p>Eco-friendly production methods</p>
+                        </div>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">🚚</div>
+                        <div>
+                            <h4>Fast Delivery</h4>
+                            <p>Quick and reliable nationwide shipping</p>
+                        </div>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">💼</div>
+                        <div>
+                            <h4>Bulk Orders</h4>
+                            <p>Competitive pricing for businesses</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="about-image">🏭</div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <h3>15+</h3>
+                <p>Years of Excellence</p>
+            </div>
+            <div class="stat-item">
+                <h3>50K+</h3>
+                <p>Happy Customers</p>
+            </div>
+            <div class="stat-item">
+                <h3>25+</h3>
+                <p>Product Varieties</p>
+            </div>
+            <div class="stat-item">
+                <h3>24/7</h3>
+                <p>Customer Support</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <h2 class="section-title">Contact Us</h2>
+        <div class="contact-content">
+            <div class="contact-info">
+                <h3>Get In Touch</h3>
+                <div class="contact-item">
+                    <div class="contact-item-icon">📍</div>
+                    <p><strong>Address:</strong><br>AgroVel Head Office<br>Jaipur, Rajasthan, India</p>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-item-icon">📞</div>
+                    <p><strong>Phone:</strong><br>+91 141 XXXX XXXX<br>+91 94XX XXXX XX</p>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-item-icon">✉️</div>
+                    <p><strong>Email:</strong><br>info@agrovelindia.com<br>sales@agrovelindia.com</p>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-item-icon">⏰</div>
+                    <p><strong>Hours:</strong><br>Mon - Fri: 9:00 AM - 6:00 PM<br>Sat: 10:00 AM - 4:00 PM</p>
+                </div>
+            </div>
+            <form onsubmit="handleSubmit(event)">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" required placeholder="Your name">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" required placeholder="your@email.com">
+                </div>
+                <div class="form-group">
+                    <label for="product">Product Interest</label>
+                    <input type="text" id="product" placeholder="Which product are you interested in?">
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" required placeholder="Tell us about your inquiry..."></textarea>
+                </div>
+                <button type="submit" class="cta-button" style="width: 100%; padding: 1rem;">Send Enquiry</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>About AgroVel</h4>
+                <ul>
+                    <li><a href="#about">Company</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#">Certifications</a></li>
+                    <li><a href="#">Sustainability</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Products</h4>
+                <ul>
+                    <li><a href="#">Seed Oils</a></li>
+                    <li><a href="#">Pulses</a></li>
+                    <li><a href="#">Byproducts</a></li>
+                    <li><a href="#">Seeds</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="#contact">Contact Us</a></li>
+                    <li><a href="#">FAQs</a></li>
+                    <li><a href="#">Bulk Ordering</a></li>
+                    <li><a href="#">Shipping Info</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 AgroVel - Premium Agricultural Products. All rights reserved.</p>
+            <p>Based in Jaipur, Rajasthan | Serving Across India</p>
+        </div>
+    </footer>
+
+    <script>
+        const navToggle = document.getElementById('navToggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        navToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close menu when a link is clicked
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Form submission
+        function handleSubmit(event) {
+            event.preventDefault();
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const product = document.getElementById('product').value;
+            const message = document.getElementById('message').value;
+
+            if (name && email && message) {
+                alert(`Thank you ${name}! We have received your enquiry.\nWe will contact you soon at ${email}`);
+                event.target.reset();
+            } else {
+                alert('Please fill in all required fields');
+            }
+        }
+
+        // Smooth scroll for nav links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                if (this.getAttribute('href') !== '#') {
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        e.preventDefault();
+                        target.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
